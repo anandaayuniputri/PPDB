@@ -1600,30 +1600,39 @@ footer {
     >
   </div>
 
-  <script>
-    /*
-      Isi informasi kontak resmi sekolah di sini.
-      Format WhatsApp: kode negara tanpa tanda +, spasi, atau tanda hubung.
-      Contoh: 628117005800
-    */
-    const SCHOOL = {
-      whatsapp: "",
-      email: "",
-      address: "",
-      mapsUrl: "",
-      instagram: ""
-    };
 
-    document.getElementById("currentYear").textContent =
-      new Date().getFullYear();
+<script>
+  /*
+    Isi informasi kontak resmi sekolah di sini.
+    Format WhatsApp: kode negara tanpa tanda +, spasi, atau tanda hubung.
+  */
+  const SCHOOL = {
+    whatsapp: "",
+    email: "",
+    address: "",
+    mapsUrl: "",
+    instagram: ""
+  };
 
-    // Navigasi mobile
-    const navToggle = document.getElementById("navToggle");
-    const navLinks = document.getElementById("navLinks");
+  // Tahun copyright (aman jika elemen tidak tersedia)
+  const currentYear = document.getElementById("currentYear");
+  if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
+  }
 
+  // NAVIGASI MOBILE
+  const navToggle = document.getElementById("navToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  if (navToggle && navLinks) {
     navToggle.addEventListener("click", function () {
       const isOpen = navLinks.classList.toggle("open");
+
       navToggle.setAttribute("aria-expanded", String(isOpen));
+      navToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"
+      );
       navToggle.textContent = isOpen ? "×" : "☰";
     });
 
@@ -1631,106 +1640,56 @@ footer {
       link.addEventListener("click", function () {
         navLinks.classList.remove("open");
         navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Buka menu navigasi");
         navToggle.textContent = "☰";
       });
     });
+  }
 
-    // Modal brosur
-    const flyerModal = document.getElementById("flyerModal");
-    const openFlyer = document.getElementById("openFlyer");
-    const viewFlyer = document.getElementById("viewFlyer");
-    const closeFlyer = document.getElementById("closeFlyer");
+  // MODAL BROSUR
+  const flyerModal = document.getElementById("flyerModal");
+  const openFlyer = document.getElementById("openFlyer");
+  const viewFlyer = document.getElementById("viewFlyer");
+  const closeFlyer = document.getElementById("closeFlyer");
 
-    function showFlyer() {
-      flyerModal.classList.add("active");
-      flyerModal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    }
+  function showFlyer() {
+    if (!flyerModal) return;
 
-    function hideFlyer() {
-      flyerModal.classList.remove("active");
-      flyerModal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
-    }
+    flyerModal.classList.add("active");
+    flyerModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
 
+  function hideFlyer() {
+    if (!flyerModal) return;
+
+    flyerModal.classList.remove("active");
+    flyerModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  if (openFlyer) {
     openFlyer.addEventListener("click", showFlyer);
+  }
 
-    if (viewFlyer) {
-      viewFlyer.addEventListener("click", showFlyer);
-    }
+  if (viewFlyer) {
+    viewFlyer.addEventListener("click", showFlyer);
+  }
 
+  if (closeFlyer) {
     closeFlyer.addEventListener("click", hideFlyer);
+  }
 
+  if (flyerModal) {
     flyerModal.addEventListener("click", function (event) {
       if (event.target === flyerModal) hideFlyer();
     });
+  }
 
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") hideFlyer();
-    });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") hideFlyer();
+  });
+</script>
 
-    // Konfigurasi kontak
-    const phoneLink = document.getElementById("phoneLink");
-    const emailLink = document.getElementById("emailLink");
-    const addressLink = document.getElementById("addressLink");
-    const socialLink = document.getElementById("socialLink");
-    const topPhone = document.querySelector(".topbar-inner a:first-child");
-    const topEmail = document.querySelector(".topbar-inner a:last-child");
-
-    const whatsappMessage = encodeURIComponent(
-      "Assalamu'alaikum, saya ingin bertanya mengenai pendaftaran SPMB Sekolah Islam Hang Tuah Batam."
-    );
-
-    if (SCHOOL.whatsapp.trim()) {
-      const waUrl = "https://wa.me/" + SCHOOL.whatsapp.trim() +
-        "?text=" + whatsappMessage;
-
-      phoneLink.href = waUrl;
-      topPhone.href = waUrl;
-      phoneLink.textContent = "☎ Hubungi Panitia SPMB";
-      topPhone.textContent = "☎ " + SCHOOL.whatsapp.trim();
-    } else {
-      phoneLink.removeAttribute("href");
-      topPhone.removeAttribute("href");
-      phoneLink.textContent = "☎ Kontak panitia belum dikonfigurasi";
-    }
-
-    if (SCHOOL.email.trim()) {
-      const emailUrl = "mailto:" + SCHOOL.email.trim();
-      emailLink.href = emailUrl;
-      topEmail.href = emailUrl;
-      emailLink.textContent = "✉ " + SCHOOL.email.trim();
-      topEmail.textContent = "✉ " + SCHOOL.email.trim();
-    } else {
-      emailLink.removeAttribute("href");
-      topEmail.removeAttribute("href");
-      emailLink.textContent = "✉ Email resmi belum dikonfigurasi";
-    }
-
-    if (SCHOOL.address.trim()) {
-      addressLink.textContent = "📍 " + SCHOOL.address.trim();
-
-      if (SCHOOL.mapsUrl.trim()) {
-        addressLink.href = SCHOOL.mapsUrl.trim();
-        addressLink.target = "_blank";
-        addressLink.rel = "noopener noreferrer";
-      } else {
-        addressLink.removeAttribute("href");
-      }
-    } else {
-      addressLink.removeAttribute("href");
-      addressLink.textContent = "📍 Alamat sekolah belum dikonfigurasi";
-    }
-
-    if (SCHOOL.instagram.trim()) {
-      socialLink.href = SCHOOL.instagram.trim();
-      socialLink.target = "_blank";
-      socialLink.rel = "noopener noreferrer";
-      socialLink.textContent = "◎ Instagram resmi sekolah";
-    } else {
-      socialLink.removeAttribute("href");
-      socialLink.textContent = "◎ Media sosial belum dikonfigurasi";
-    }
-  </script>
 </body>
 </html>

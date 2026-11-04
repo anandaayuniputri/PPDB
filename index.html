@@ -1,0 +1,1736 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPMB Sekolah Islam Hang Tuah Batam</title>
+  <meta name="description" content="Sistem Penerimaan Murid Baru Sekolah Islam Hang Tuah Batam">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #073B91;
+      --navy-dark: #06265B;
+      --blue: #1254AD;
+      --blue-light: #EAF1FC;
+      --gold: #FFB900;
+      --gold-light: #FFF5D6;
+      --cream: #F5F8FD;
+      --text: #30343B;
+      --muted: #687386;
+      --border: #E0E6EF;
+      --shadow: 0 16px 45px rgba(7,59,145,.10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.3;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(1160px, 90%);
+      margin: auto;
+    }
+
+    .section { padding: 70px 0; }
+
+    .section-heading {
+      max-width: 720px;
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 14px;
+      margin-bottom: 18px;
+      border-radius: 30px;
+      color: var(--navy);
+      background: var(--gold-light);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .section-heading h2 {
+      margin-bottom: 15px;
+      color: var(--navy);
+      font-size: clamp(27px, 4vw, 39px);
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 21px;
+      border: 0;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-gold {
+      color: var(--text);
+      background: var(--gold);
+      box-shadow: 0 7px 20px rgba(255,185,0,.2);
+    }
+
+    .btn-navy { color: white; background: var(--navy); }
+
+    /* TOP BAR */
+    .topbar {
+      padding: 8px 0;
+      color: white;
+      background: var(--navy);
+      font-size: 12px;
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.98);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 83px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+.brand-logo {
+  width: 49px;
+  height: 49px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+    .brand-name {
+      color: #B18A36;
+      font: 800 13px/1.5 'Plus Jakarta Sans', sans-serif;
+      white-space: nowrap;
+    }
+
+    .brand-name small {
+      display: block;
+      color: var(--muted);
+      font: 600 10px/1.5 'DM Sans', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover { color: #B18A36; }
+
+    .nav-toggle {
+      display: none;
+      border: 0;
+      background: none;
+      color: var(--navy);
+      font-size: 27px;
+    }
+
+    /* HERO */
+    .hero {
+      overflow: hidden;
+      color: white;
+      background:
+        radial-gradient(circle at 82% 20%, rgba(255,185,0,.19), transparent 30%),
+        linear-gradient(120deg,#06265B,#073B91 62%,#1254AD);
+    }
+
+    .hero-grid {
+      min-height: 540px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 50px;
+      padding: 65px 0 80px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      margin-bottom: 24px;
+      color: #FFD15C;
+      background: rgba(255,185,0,.1);
+      border: 1px solid rgba(255,185,0,.4);
+      border-radius: 40px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .8px;
+    }
+
+    .hero-label span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      margin-bottom: 20px;
+      font-size: clamp(37px,5vw,57px);
+      letter-spacing: -2px;
+    }
+
+    .hero h1 em { color: var(--gold); font-style: normal; }
+
+    .hero-description {
+      max-width: 510px;
+      margin-bottom: 29px;
+      color: #D7E3F3;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+    .btn-outline {
+      color: white;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.45);
+    }
+
+    .hero-note {
+      margin-top: 25px;
+      color: #D7E3F3;
+      font-size: 11px;
+    }
+
+    .hero-note span { color: var(--gold); }
+
+    .hero-visual {
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+    }
+
+    .hero-photo {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      border: 5px solid rgba(255,255,255,.12);
+      border-radius: 150px 150px 18px 18px;
+      background: #244E85;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 35% 0 0;
+      background: linear-gradient(transparent,rgba(6,38,91,.88));
+    }
+
+    .hero-photo-caption {
+      position: absolute;
+      z-index: 1;
+      bottom: 24px;
+      left: 23px;
+      right: 20px;
+    }
+
+    .hero-photo-caption small {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .hero-photo-caption h3 { margin-top: 5px; font-size: 19px; }
+
+    /* QUICK INFO */
+    .quick-info {
+      position: relative;
+      z-index: 5;
+      margin-top: -35px;
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      padding: 22px 10px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .quick-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 5px 17px;
+    }
+
+    .quick-item + .quick-item { border-left: 1px solid var(--border); }
+
+    .quick-icon {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      background: var(--blue-light);
+      border-radius: 12px;
+      font-size: 21px;
+    }
+
+    .quick-item strong {
+      display: block;
+      color: var(--navy);
+      font-size: 12px;
+    }
+
+    .quick-item span { color: var(--muted); font-size: 10px; }
+
+    /* PROFIL */
+    .about-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .about-visual {
+      position: relative;
+      padding: 0 20px 20px 0;
+    }
+
+    .about-visual img {
+      display: block;
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+      border-radius: 15px;
+      background: var(--blue-light);
+    }
+
+    .about-visual::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      right: 0;
+      bottom: 0;
+      width: 65%;
+      height: 65%;
+      border: 3px solid var(--gold);
+      border-radius: 15px;
+    }
+
+    .about-content h2 {
+      margin-bottom: 19px;
+      color: var(--navy);
+      font-size: clamp(27px,4vw,37px);
+      letter-spacing: -1px;
+    }
+
+    .about-content p {
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* VISI MISI */
+    .vision-mission-section {
+      padding: 65px 0 25px;
+      background: var(--cream);
+      scroll-margin-top: 90px;
+    }
+
+    .vm-container { width: min(1080px,90%); margin: auto; }
+
+    .vm-heading {
+      max-width: 680px;
+      margin: 0 auto 32px;
+      text-align: center;
+    }
+
+    .vm-heading h2 {
+      margin-bottom: 12px;
+      color: var(--navy);
+      font-size: clamp(27px,4vw,38px);
+    }
+
+    .vm-heading p { color: var(--muted); font-size: 14px; }
+
+    .vm-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+    }
+
+    .vm-card {
+      position: relative;
+      padding: 32px;
+      overflow: hidden;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(7,59,145,.06);
+    }
+
+    .vm-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gold);
+    }
+
+    .vm-card-title { margin-bottom: 20px; }
+
+    .vm-card-title h3 {
+      color: var(--navy);
+      font-size: 23px;
+    }
+
+    .vm-vision-text {
+      color: #414B5B;
+      font-size: 15px;
+      line-height: 1.95;
+    }
+
+    .vm-vision-text strong { color: var(--navy); }
+
+    .vm-mission-list {
+      display: grid;
+      list-style: none;
+      counter-reset: mission;
+    }
+
+    .vm-mission-list li {
+      display: grid;
+      grid-template-columns: 32px minmax(0,1fr);
+      align-items: start;
+      gap: 13px;
+      padding: 16px 0;
+      border-bottom: 1px solid #E8EDF5;
+      color: #414B5B;
+      font-size: 14px;
+      line-height: 1.85;
+      counter-increment: mission;
+    }
+
+    .vm-mission-list li:first-child { padding-top: 0; }
+    .vm-mission-list li:last-child { padding-bottom: 0; border: 0; }
+
+    .vm-mission-list li::before {
+      content: "0" counter(mission);
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      background: var(--blue-light);
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .vm-footer {
+      margin-top: 24px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 12px;
+    }
+
+    /* PROGRAM PENDIDIKAN */
+    .program-section {
+      padding: 25px 0 65px;
+      background: var(--cream);
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 22px;
+    }
+
+    .program-card {
+      position: relative;
+      min-height: 205px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px;
+      overflow: hidden;
+      text-align: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      transition: .25s;
+    }
+
+    .program-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform .25s;
+    }
+
+    .program-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+      box-shadow: var(--shadow);
+    }
+
+    .program-card:hover::before { transform: scaleX(1); }
+
+    /* LOGO LANDSCAPE RASIO 4:3 */
+    .program-icon {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      padding: 8px;
+      border-radius: 14px;
+      background: var(--gold-light);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .program-icon img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .program-card h3 {
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .program-card .text-link {
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* KEUNGGULAN */
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 22px;
+    }
+
+    .benefit-card { padding: 22px 10px; text-align: center; }
+
+    .benefit-icon {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 17px;
+      border-radius: 18px;
+      background: var(--blue-light);
+      font-size: 28px;
+    }
+
+    .benefit-card h3 {
+      margin-bottom: 9px;
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    .benefit-card p { color: var(--muted); font-size: 11px; }
+
+    /* ALUR PENDAFTARAN */
+    .registration-section {
+      padding: 55px 0 70px;
+      color: white;
+      background: linear-gradient(120deg,#06265B,#073B91);
+      scroll-margin-top: 90px;
+    }
+
+    .registration-section .section-heading { margin-bottom: 28px; }
+    .registration-section .section-heading h2 { color: white; }
+    .registration-section .section-heading p { color: #D0DDF0; }
+
+.flyer-wrapper {
+  width: min(600px, 100%);
+  margin: 0 auto;
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 18px 55px rgba(7,59,145,.12);
+}
+
+    .flyer-top,
+    .flyer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .flyer-top { padding: 0 2px 17px; }
+
+    .flyer-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .flyer-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .flyer-year {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .flyer-image-button {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      background: var(--blue-light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: zoom-in;
+    }
+
+    .flyer-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      transition: transform .3s ease;
+    }
+
+    .flyer-image-button:hover .flyer-image { transform: scale(1.01); }
+
+    .flyer-zoom {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      padding: 9px 14px;
+      color: white;
+      background: rgba(6,38,91,.9);
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      opacity: 0;
+      transition: .25s;
+    }
+
+    .flyer-image-button:hover .flyer-zoom,
+    .flyer-image-button:focus-visible .flyer-zoom { opacity: 1; }
+
+    .flyer-bottom { padding: 18px 2px 0; }
+
+    .flyer-bottom strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--navy);
+      font-size: 13px;
+    }
+
+    .flyer-bottom p { color: var(--muted); font-size: 11px; }
+
+    .flyer-open-btn {
+      flex-shrink: 0;
+      padding: 10px 15px;
+      color: white;
+      background: var(--navy);
+      border: 0;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .flyer-open-btn:hover {
+      background: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    /* MODAL FLYER */
+    .flyer-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px 25px;
+      background: rgba(4,18,45,.94);
+      backdrop-filter: blur(5px);
+    }
+
+    .flyer-modal.active { display: flex; }
+
+    .flyer-modal-image {
+      display: block;
+      max-width: min(1000px,100%);
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 15px 60px rgba(0,0,0,.3);
+    }
+
+    .flyer-modal-close {
+      position: absolute;
+      top: 13px;
+      right: 22px;
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 50%;
+      font-size: 30px;
+    }
+
+    /* CTA */
+    .cta-section { padding: 55px 0; }
+
+    .cta-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 40px;
+      color: white;
+      background: linear-gradient(120deg,#06265B,#073B91);
+      border-radius: 19px;
+    }
+
+    .cta-box h2 {
+      margin-bottom: 12px;
+      font-size: clamp(24px,3vw,33px);
+    }
+
+    .cta-box p { max-width: 590px; color: #D0DDF0; font-size: 12px; }
+
+/* FOOTER */
+footer {
+  padding: 20px 0;
+  color: #A9BCD5;
+  background: #06265B;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  color: #C7D4E8;
+  font-size: 11px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+/* TEMUKAN KAMI */
+.find-us-section {
+  padding: 70px 0;
+  background: #F5F8FD;
+}
+
+.find-us-heading {
+  max-width: 700px;
+  margin: 0 auto 38px;
+  text-align: center;
+}
+
+.find-us-heading .eyebrow {
+  margin-bottom: 15px;
+}
+
+.find-us-heading h2 {
+  margin-bottom: 12px;
+  color: var(--navy);
+  font-size: clamp(28px, 4vw, 38px);
+  letter-spacing: -.8px;
+}
+
+.find-us-heading p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.find-us-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: 25px;
+  align-items: stretch;
+}
+
+.find-us-map {
+  min-width: 0;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(7,59,145,.07);
+}
+
+.find-us-map iframe {
+  display: block;
+  width: 100%;
+  height: 350px;
+  border: 0;
+}
+
+.find-us-map-info {
+  padding: 22px 24px;
+}
+
+.find-us-map-info h3 {
+  margin-bottom: 8px;
+  color: var(--navy);
+  font-size: 17px;
+}
+
+.find-us-map-info p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.find-us-address-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 4px;
+}
+
+.find-us-contacts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-content: stretch;
+}
+
+.find-us-contact {
+  min-width: 0;
+  min-height: 125px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 16px 12px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(7,59,145,.04);
+  transition: transform .25s ease, border-color .25s ease,
+              box-shadow .25s ease;
+}
+
+.find-us-contact:hover {
+  transform: translateY(-3px);
+  border-color: #C9D7EE;
+  box-shadow: 0 12px 28px rgba(7,59,145,.10);
+}
+
+.find-us-contact-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--blue-light);
+}
+
+.find-us-contact-icon svg {
+  display: block;
+  width: 23px;
+  height: 23px;
+}
+
+.find-us-contact-text {
+  min-width: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.find-us-contact strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--navy);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.find-us-contact span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.find-us-contact .contact-arrow {
+  display: inline-block;
+  margin-top: 3px;
+  color: var(--navy);
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .find-us-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .find-us-map iframe {
+    height: 320px;
+  }
+
+  .find-us-contacts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .find-us-contact {
+    min-height: 145px;
+  }
+}
+
+@media (max-width: 480px) {
+.find-us-contact {
+  min-height: 115px;
+  padding: 12px 8px;
+  gap: 7px;
+  border-radius: 12px;
+}
+
+  .find-us-heading {
+    margin-bottom: 25px;
+  }
+
+  .find-us-heading p {
+    font-size: 12px;
+  }
+
+  .find-us-map {
+    border-radius: 14px;
+  }
+
+  .find-us-map iframe {
+    height: 260px;
+  }
+
+  .find-us-map-info {
+    padding: 18px;
+  }
+
+  .find-us-map-info h3 {
+    font-size: 15px;
+  }
+
+  .find-us-contacts {
+    gap: 10px;
+  }
+
+  .find-us-contact {
+    min-height: 135px;
+    padding: 14px 12px;
+    gap: 11px;
+    border-radius: 13px;
+  }
+
+  .find-us-contact-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .find-us-contact-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .find-us-contact strong {
+    font-size: 12px;
+  }
+
+  .find-us-contact span {
+    font-size: 10px;
+  }
+}
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .nav-links { gap: 12px; font-size: 11px; }
+      .hero-grid { gap: 30px; }
+      .about-grid { gap: 35px; }
+      .program-grid { gap: 15px; }
+    }
+
+    @media (max-width: 760px) {
+      .section { padding: 50px 0; }
+      .nav-inner { min-height: 72px; }
+      .brand-logo { width: 42px; height: 42px; font-size: 16px; }
+      .brand-name { font-size: 11px; }
+      .brand-name small { font-size: 8px; }
+      .nav-toggle { display: block; }
+
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        display: none;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+        padding: 18px 5% 24px;
+        background: white;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links > a { padding: 11px 0; }
+      .nav-links .btn { margin-top: 12px; }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        min-height: unset;
+        padding: 48px 0 65px;
+      }
+
+      .hero h1 { font-size: clamp(36px,9vw,49px); }
+      .hero-visual { min-height: 320px; margin: 8px 12px 0 20px; }
+      .hero-photo { height: 320px; border-radius: 125px 125px 18px 18px; }
+
+      .quick-grid { grid-template-columns: 1fr; padding: 10px 20px; }
+      .quick-item { justify-content: flex-start; padding: 15px 0; }
+
+      .quick-item + .quick-item {
+        border-left: 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .about-visual img { height: 300px; }
+
+      .vision-mission-section { padding: 45px 0 20px; }
+      .vm-container { width: 91%; }
+      .vm-heading { margin-bottom: 25px; }
+      .vm-heading h2 { font-size: 28px; }
+      .vm-heading p { font-size: 13px; }
+      .vm-layout { grid-template-columns: 1fr; gap: 16px; }
+      .vm-card { padding: 25px 21px; border-radius: 15px; }
+      .vm-card-title { margin-bottom: 18px; }
+      .vm-card-title h3 { font-size: 21px; }
+      .vm-vision-text { font-size: 14px; }
+
+      .vm-mission-list li {
+        grid-template-columns: 29px minmax(0,1fr);
+        gap: 11px;
+        padding: 15px 0;
+        font-size: 13px;
+      }
+
+      .vm-mission-list li::before { width: 29px; height: 29px; }
+
+      .program-section { padding-top: 20px; padding-bottom: 45px; }
+      .program-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; }
+      .program-card { min-height: 170px; padding: 15px 10px; border-radius: 15px; }
+
+      .program-icon {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        height: auto;
+        margin-bottom: 14px;
+        padding: 6px;
+        border-radius: 12px;
+      }
+
+      .program-card h3 { font-size: 14px; }
+
+      .registration-section { padding: 42px 0 50px; }
+      .registration-section .section-heading { margin-bottom: 22px; }
+      .flyer-wrapper { padding: 12px; border-radius: 15px; }
+
+      .flyer-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        padding-bottom: 12px;
+      }
+
+      .flyer-image-button { border-radius: 8px; }
+      .flyer-zoom { right: 8px; bottom: 8px; padding: 7px 10px; font-size: 10px; opacity: 1; }
+
+      .flyer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+        padding-top: 14px;
+      }
+
+      .flyer-open-btn { width: 100%; padding: 12px; }
+      .flyer-modal { padding: 50px 10px 15px; }
+
+      .benefit-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+      .cta-box { align-items: flex-start; flex-direction: column; padding: 30px 23px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px 22px; }
+      .footer-grid > div:first-child { grid-column: 1/-1; }
+    }
+
+    @media (max-width: 420px) {
+      .container { width: 91%; }
+      .hero-actions .btn { width: 100%; }
+      .hero-visual { min-height: 275px; }
+      .hero-photo { height: 275px; }
+      .program-grid { gap: 10px; }
+      .program-card { min-height: 155px; padding: 12px 7px; }
+
+      .program-icon {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        height: auto;
+        padding: 5px;
+      }
+
+      .program-card h3 { font-size: 13px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-grid > div:first-child { grid-column: auto; }
+      .footer-bottom { flex-direction: column; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#beranda" class="brand">
+        <div class="brand-logo">
+  <img src="assets/ht.png" alt="Logo Sekolah Islam Hang Tuah Batam">
+</div>
+        <div class="brand-name">
+          SEKOLAH ISLAM<br>
+          HANG TUAH BATAM
+          <small>PENERIMAAN MURID BARU</small>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu navigasi" aria-expanded="false">☰</button>
+
+<nav class="nav-links" id="navLinks">
+  <a href="#beranda">Beranda</a>
+  <a href="#profil">Profil Sekolah</a>
+  <a href="#program">Jenjang</a>
+  <a href="#alur">Alur Pendaftaran</a>
+  <a href="brosur.html">Brosur</a>
+  <a href="https://bit.ly/PPDBSIHAT27-28"
+   class="btn btn-gold"
+   target="_blank"
+   rel="noopener noreferrer">
+  Daftar Sekarang
+</a>
+</nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="beranda">
+      <div class="container hero-grid">
+        <div>
+          <div class="hero-label"><span></span>SISTEM PENERIMAAN MURID BARU</div>
+          <h1>Sekolah Islam<br><em>Hang Tuah Batam</em></h1>
+          <p class="hero-description">
+            Selamat Datang di Sistem PPDB Online Sekolah Islam Hang Tuah Batam Tahun Akademik 2027/2028. Mari bergabung bersama kami untuk membentuk generasi yang cerdas, berkarakter, dan berakhlak mulia melalui pendidikan islami yang berkualitas.
+          </p>
+          <div class="hero-actions">
+            <a href="#alur" class="btn btn-gold">Alur Pendaftaran</a>
+            <a href="https://hangtuahbatam.sch.id/" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Kenali Sekolah Kami</a>
+          </div>
+          <div class="hero-note"><span>✦</span> Pendidikan berkualitas untuk generasi masa depan.</div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-photo">
+            <img src="assets/beranda.png" alt="Kegiatan belajar siswa Sekolah Islam Hang Tuah Batam">
+            <div class="hero-photo-caption">
+              <small>SPMB SEKOLAH ISLAM HANG TUAH BATAM</small>
+              <h3>Belajar, Bertumbuh, Berprestasi</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFIL SEKOLAH -->
+    <section class="section" id="profil">
+      <div class="container about-grid">
+        <div class="about-visual">
+          <img src="assets/profil.png" alt="Profil Sekolah Islam Hang Tuah Batam" loading="lazy">
+        </div>
+        <div class="about-content">
+          <span class="eyebrow">Profil Sekolah</span>
+          <h2>Mendampingi Langkah Kecil Menuju Masa Depan Besar.</h2>
+          <p>
+            Sekolah Islam Hang Tuah Batam merupakan lembaga pendidikan yang mengutamakan pemahaman dan penerapan nilai-nilai Islam dalam proses pembelajaran. Berlokasi di Jalan Ranai No. 11, Bengkong Polisi, Batam, Kepulauan Riau, sekolah ini menyediakan jenjang pendidikan mulai dari TK, SD, SMP, hingga SMK. Pada jenjang SMK, program keahlian unggulannya adalah Desain Komunikasi Visual (DKV).
+          </p>
+          <a href="#visi-misi" class="btn btn-navy">Visi dan Misi ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISI DAN MISI -->
+    <section class="vision-mission-section" id="visi-misi">
+      <div class="vm-container">
+        <div class="vm-heading">
+          <h2>Visi dan Misi</h2>
+          <p>Landasan dan komitmen Sekolah Islam Hang Tuah Batam dalam mewujudkan pendidikan yang unggul dan berkualitas.</p>
+        </div>
+
+        <div class="vm-layout">
+          <article class="vm-card">
+            <div class="vm-card-title"><h3>Visi Sekolah</h3></div>
+            <p class="vm-vision-text">
+              Mewujudkan lembaga pendidikan dan keagamaan yang unggul dalam membangun Sumber Daya Manusia (SDM) yang <strong>berkarakter, berakhlak mulia, berintegritas, dan berkualitas</strong>, serta mampu berdaya saing di tingkat nasional maupun internasional melalui pendidikan yang berlandaskan nilai-nilai Islam untuk mewujudkan generasi unggul pada tahun 2030 mendatang.
+            </p>
+          </article>
+
+          <article class="vm-card">
+            <div class="vm-card-title"><h3>Misi Sekolah</h3></div>
+            <ol class="vm-mission-list">
+              <li>Melaksanakan pendidikan dan usaha-usaha yang berdasarkan aqidah dan syariat Islam.</li>
+              <li>Meningkatkan pendidikan yang bermutu dan pengajaran yang berkualitas.</li>
+              <li>Menghasilkan lulusan yang religius, mencintai atau bangga menjadi bangsa Indonesia, serta menjadikan Islam sebagai pedoman hidupnya.</li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+<!-- PROGRAM PENDIDIKAN -->
+<section class="section program-section" id="program">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Jenjang Pendidikan</span>
+      <h2>Temukan Jenjang Pendidikan yang Tepat</h2>
+      <p>Kenali pilihan jenjang pendidikan dan dapatkan informasi lebih lanjut dari panitia SPMB.</p>
+    </div>
+
+    <div class="program-grid">
+
+      <!-- TK -->
+      <div class="program-card">
+        <div class="program-icon">
+          <img src="assets/logotk.png" alt="Logo TK" loading="lazy">
+        </div>
+        <h3>TK</h3>
+      </div>
+
+      <!-- SD -->
+      <div class="program-card">
+        <div class="program-icon">
+          <img src="assets/logosd.png" alt="Logo SD" loading="lazy">
+        </div>
+        <h3>SD</h3>
+      </div>
+
+      <!-- SMP -->
+      <div class="program-card">
+        <div class="program-icon">
+          <img src="assets/logosmp.png" alt="Logo SMP" loading="lazy">
+        </div>
+        <h3>SMP</h3>
+      </div>
+
+      <!-- SMK -->
+      <div class="program-card">
+        <div class="program-icon">
+          <img src="assets/logosmk.png" alt="Logo SMK" loading="lazy">
+        </div>
+        <h3>SMK</h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- ALUR PENDAFTARAN: BROSUR -->
+    <section class="section registration-section" id="alur">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Alur Pendaftaran</span>
+          <h2>Alur Pendaftaran Murid Baru</h2>
+          <p>Simak tahapan pendaftaran murid baru Sekolah Islam Hang Tuah Batam melalui brosur berikut.</p>
+        </div>
+
+        <div class="flyer-wrapper">
+          <div class="flyer-top">
+            <div class="flyer-label">
+              <span class="flyer-dot"></span>
+              INFORMASI SPMB
+            </div>
+            <span class="flyer-year">TAHUN AJARAN 2026/2027</span>
+          </div>
+
+          <button
+            type="button"
+            class="flyer-image-button"
+            id="openFlyer"
+            aria-label="Perbesar brosur alur pendaftaran"
+          >
+            <img
+              src="assets/alurpendaftaran.png"
+              alt="Brosur alur pendaftaran Sekolah Islam Hang Tuah Batam"
+              class="flyer-image"
+              loading="lazy"
+            >
+            <span class="flyer-zoom">⤢ Perbesar Brosur</span>
+          </button>
+
+          <div class="flyer-bottom">
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="daftar">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>Masih Ada yang Ingin Ditanyakan?</h2>
+            <p>Untuk informasi lebih detail mengenai pendaftaran, biaya pendidikan, maupun program sekolah, silakan hubungi Humas Sekolah Islam Hang Tuah Batam. Kami siap membantu menjawab pertanyaan Anda.</p>
+          </div>
+          <a href="#kontak" class="btn btn-gold">Hubungi Humas ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+
+<!-- TEMUKAN KAMI -->
+<section class="find-us-section" id="temukan-kami">
+  <div class="container">
+
+    <div class="find-us-heading">
+      <span class="eyebrow">Kontak & Lokasi</span>
+      <h2>TEMUKAN KAMI</h2>
+      <p>
+        Temukan lokasi sekolah dan terhubung dengan Sekolah Islam
+        Hang Tuah Batam melalui kanal resmi kami.
+      </p>
+    </div>
+
+    <div class="find-us-grid">
+
+      <!-- LOKASI SEKOLAH -->
+      <div class="find-us-map">
+
+        <iframe
+          src="https://maps.google.com/maps?q=1.1634,104.0203&z=16&output=embed"
+          title="Lokasi Sekolah Islam Hang Tuah Batam"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+
+        <div class="find-us-map-info">
+          <h3>Sekolah Islam Hang Tuah Batam</h3>
+          <p>
+            Jalan Ranai No. 11, Bengkong Polisi,
+            Batam, Kepulauan Riau.
+          </p>
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=1.1634%2C104.0203"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="find-us-address-link">
+            Lihat petunjuk lokasi ↗
+          </a>
+        </div>
+
+      </div>
+
+      <!-- KONTAK DAN MEDIA SOSIAL -->
+      <div class="find-us-contacts">
+
+        <!-- WHATSAPP -->
+        <a
+          href="https://wa.me/628117005800"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="find-us-contact"
+          aria-label="Hubungi Sekolah Islam Hang Tuah Batam melalui WhatsApp">
+
+          <div class="find-us-contact-icon whatsapp">
+            <svg viewBox="0 0 24 24" fill="currentColor"
+              aria-hidden="true">
+              <path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .14 5.35.14 11.93c0 2.1.55 4.15 1.6 5.95L0 24l6.27-1.64a11.93 11.93 0 0 0 5.8 1.48h.01c6.58 0 11.94-5.35 11.94-11.93 0-3.19-1.24-6.19-3.5-8.43ZM12.08 21.8a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.72.98.99-3.62-.24-.37a9.85 9.85 0 0 1-1.52-5.27c0-5.46 4.44-9.9 9.9-9.9a9.84 9.84 0 0 1 7.01 2.9 9.84 9.84 0 0 1 2.9 7.01c0 5.46-4.44 9.9-9.92 9.9Zm5.43-7.41c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.23-.65.08-.3-.15-1.26-.46-2.4-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.67-1.61-.92-2.2-.24-.57-.49-.5-.67-.51h-.57c-.2 0-.52.08-.79.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.5 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.08-.13-.27-.2-.57-.35Z"/>
+            </svg>
+          </div>
+
+          <div class="find-us-contact-text">
+            <strong>WhatsApp</strong>
+            <span>0811-7005-800</span>
+            <span class="contact-arrow">Hubungi kami ↗</span>
+          </div>
+        </a>
+
+        <!-- INSTAGRAM -->
+        <a
+          href="https://www.instagram.com/hangtuahbatam/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="find-us-contact"
+          aria-label="Kunjungi Instagram resmi Hang Tuah Batam">
+
+          <div class="find-us-contact-icon instagram">
+            <svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1"
+                fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+
+          <div class="find-us-contact-text">
+            <strong>Instagram</strong>
+            <span>@hangtuahbatam</span>
+            <span class="contact-arrow">Lihat profil ↗</span>
+          </div>
+        </a>
+
+        <!-- FACEBOOK -->
+        <a
+          href="https://www.facebook.com/hangtuahbatam"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="find-us-contact"
+          aria-label="Kunjungi Facebook resmi Hang Tuah Batam">
+
+          <div class="find-us-contact-icon facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"
+              aria-hidden="true">
+              <path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.4c0-3.03 1.79-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.96h-1.51c-1.49 0-1.95.93-1.95 1.88v2.29h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07Z"/>
+            </svg>
+          </div>
+
+          <div class="find-us-contact-text">
+            <strong>Facebook</strong>
+            <span>Hang Tuah Batam</span>
+            <span class="contact-arrow">Lihat halaman ↗</span>
+          </div>
+        </a>
+
+        <!-- WEBSITE -->
+        <a
+          href="https://hangtuahbatam.sch.id/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="find-us-contact"
+          aria-label="Kunjungi website resmi Sekolah Islam Hang Tuah Batam">
+
+          <div class="find-us-contact-icon website">
+            <svg viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round"
+              aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/>
+            </svg>
+          </div>
+
+          <div class="find-us-contact-text">
+            <strong>Website</strong>
+            <span>hangtuahbatam.sch.id</span>
+            <span class="contact-arrow">Kunjungi website ↗</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <p>
+        &copy; 2026 Sekolah Islam Hang Tuah Batam. All Rights Reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <!-- MODAL PERBESAR BROSUR -->
+  <div class="flyer-modal" id="flyerModal" aria-hidden="true">
+    <button type="button" class="flyer-modal-close" id="closeFlyer" aria-label="Tutup brosur">×</button>
+    <img
+      src="assets/alurpendaftaran.png"
+      alt="Brosur alur pendaftaran Sekolah Islam Hang Tuah Batam"
+      class="flyer-modal-image"
+    >
+  </div>
+
+  <script>
+    /*
+      Isi informasi kontak resmi sekolah di sini.
+      Format WhatsApp: kode negara tanpa tanda +, spasi, atau tanda hubung.
+      Contoh: 628117005800
+    */
+    const SCHOOL = {
+      whatsapp: "",
+      email: "",
+      address: "",
+      mapsUrl: "",
+      instagram: ""
+    };
+
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+
+    // Navigasi mobile
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    navToggle.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+      navToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    document.querySelectorAll("#navLinks a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.textContent = "☰";
+      });
+    });
+
+    // Modal brosur
+    const flyerModal = document.getElementById("flyerModal");
+    const openFlyer = document.getElementById("openFlyer");
+    const viewFlyer = document.getElementById("viewFlyer");
+    const closeFlyer = document.getElementById("closeFlyer");
+
+    function showFlyer() {
+      flyerModal.classList.add("active");
+      flyerModal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function hideFlyer() {
+      flyerModal.classList.remove("active");
+      flyerModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    openFlyer.addEventListener("click", showFlyer);
+
+    if (viewFlyer) {
+      viewFlyer.addEventListener("click", showFlyer);
+    }
+
+    closeFlyer.addEventListener("click", hideFlyer);
+
+    flyerModal.addEventListener("click", function (event) {
+      if (event.target === flyerModal) hideFlyer();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") hideFlyer();
+    });
+
+    // Konfigurasi kontak
+    const phoneLink = document.getElementById("phoneLink");
+    const emailLink = document.getElementById("emailLink");
+    const addressLink = document.getElementById("addressLink");
+    const socialLink = document.getElementById("socialLink");
+    const topPhone = document.querySelector(".topbar-inner a:first-child");
+    const topEmail = document.querySelector(".topbar-inner a:last-child");
+
+    const whatsappMessage = encodeURIComponent(
+      "Assalamu'alaikum, saya ingin bertanya mengenai pendaftaran SPMB Sekolah Islam Hang Tuah Batam."
+    );
+
+    if (SCHOOL.whatsapp.trim()) {
+      const waUrl = "https://wa.me/" + SCHOOL.whatsapp.trim() +
+        "?text=" + whatsappMessage;
+
+      phoneLink.href = waUrl;
+      topPhone.href = waUrl;
+      phoneLink.textContent = "☎ Hubungi Panitia SPMB";
+      topPhone.textContent = "☎ " + SCHOOL.whatsapp.trim();
+    } else {
+      phoneLink.removeAttribute("href");
+      topPhone.removeAttribute("href");
+      phoneLink.textContent = "☎ Kontak panitia belum dikonfigurasi";
+    }
+
+    if (SCHOOL.email.trim()) {
+      const emailUrl = "mailto:" + SCHOOL.email.trim();
+      emailLink.href = emailUrl;
+      topEmail.href = emailUrl;
+      emailLink.textContent = "✉ " + SCHOOL.email.trim();
+      topEmail.textContent = "✉ " + SCHOOL.email.trim();
+    } else {
+      emailLink.removeAttribute("href");
+      topEmail.removeAttribute("href");
+      emailLink.textContent = "✉ Email resmi belum dikonfigurasi";
+    }
+
+    if (SCHOOL.address.trim()) {
+      addressLink.textContent = "📍 " + SCHOOL.address.trim();
+
+      if (SCHOOL.mapsUrl.trim()) {
+        addressLink.href = SCHOOL.mapsUrl.trim();
+        addressLink.target = "_blank";
+        addressLink.rel = "noopener noreferrer";
+      } else {
+        addressLink.removeAttribute("href");
+      }
+    } else {
+      addressLink.removeAttribute("href");
+      addressLink.textContent = "📍 Alamat sekolah belum dikonfigurasi";
+    }
+
+    if (SCHOOL.instagram.trim()) {
+      socialLink.href = SCHOOL.instagram.trim();
+      socialLink.target = "_blank";
+      socialLink.rel = "noopener noreferrer";
+      socialLink.textContent = "◎ Instagram resmi sekolah";
+    } else {
+      socialLink.removeAttribute("href");
+      socialLink.textContent = "◎ Media sosial belum dikonfigurasi";
+    }
+  </script>
+</body>
+</html>

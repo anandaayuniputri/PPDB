@@ -1,0 +1,1108 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brosur SPMB - Sekolah Islam Hang Tuah Batam</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #073B91;
+      --navy-dark: #06265B;
+      --navy-soft: #EAF1FC;
+      --gold: #FFB900;
+      --gold-light: #FFF5D6;
+      --cream: #F5F8FD;
+      --text: #30343B;
+      --muted: #687386;
+      --border: #D5E1F0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .container {
+      width: min(1160px, 90%);
+      margin: auto;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: white;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 83px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 49px;
+      height: 49px;
+      object-fit: contain;
+    }
+
+    .brand-name {
+      color: #B18A36;
+      font: 800 13px/1.5 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .brand-name small {
+      display: block;
+      color: var(--muted);
+      font: 600 10px 'DM Sans', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .back-link:hover {
+      color: #B18A36;
+    }
+
+    /* HERO */
+    .page-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 65px 0 75px;
+      color: white;
+      text-align: center;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(255,185,0,.2), transparent 28%),
+        radial-gradient(circle at 10% 90%, rgba(255,255,255,.08), transparent 25%),
+        linear-gradient(120deg, #06265B, #073B91 65%, #1254AD);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 15px;
+      margin-bottom: 18px;
+      color: var(--navy);
+      background: var(--gold-light);
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .page-hero h1 {
+      margin-bottom: 13px;
+      font: 800 clamp(29px, 4vw, 44px)/1.3 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .page-hero h1 span {
+      color: var(--gold);
+    }
+
+    .page-hero p {
+      max-width: 650px;
+      margin: auto;
+      color: #D7E3F3;
+      font-size: 14px;
+    }
+
+    /* MAIN SECTION */
+    .brosur-section {
+      padding: 55px 0 85px;
+    }
+
+    /* JENJANG TABS */
+    .jenjang-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 35px;
+    }
+
+    .tab-button {
+      min-width: 105px;
+      padding: 11px 22px;
+      color: var(--navy);
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .tab-button:hover {
+      border-color: var(--navy);
+      background: var(--navy-soft);
+    }
+
+    .tab-button.active {
+      color: white;
+      background: var(--navy);
+      border-color: var(--navy);
+      box-shadow: 0 5px 14px rgba(7,59,145,.17);
+    }
+
+    /* JENJANG INFORMATION */
+    .jenjang-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 23px;
+      margin-bottom: 25px;
+      background: white;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--gold);
+      border-radius: 12px;
+    }
+
+    .jenjang-info h3 {
+      margin-bottom: 3px;
+      color: var(--navy);
+      font: 800 19px 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .jenjang-info p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .total-badge {
+      flex-shrink: 0;
+      padding: 7px 13px;
+      color: #99711C;
+      background: var(--gold-light);
+      border-radius: 30px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* BROSUR GRID */
+    .brosur-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .brosur-card {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      transition: .25s;
+    }
+
+    .brosur-card:hover {
+      transform: translateY(-4px);
+      border-color: #D5B15B;
+      box-shadow: 0 15px 35px rgba(7,59,145,.08);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 20px 22px;
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      background: var(--navy-soft);
+      border-radius: 12px;
+      font-size: 21px;
+    }
+
+    .card-icon.gold {
+      color: #99711C;
+      background: var(--gold-light);
+    }
+
+    .card-title h3 {
+      margin-bottom: 2px;
+      color: var(--navy);
+      font: 800 15px 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .card-title p {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .card-tag {
+      margin-left: auto;
+      flex-shrink: 0;
+      padding: 5px 9px;
+      color: var(--navy);
+      background: var(--navy-soft);
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .card-tag.gold {
+      color: #99711C;
+      background: var(--gold-light);
+    }
+
+    /* PORTRAIT BROCHURE PREVIEW */
+    .preview-area {
+      position: relative;
+      min-height: 490px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px 20px;
+      background:
+        radial-gradient(circle at 85% 15%, rgba(255,185,0,.2), transparent 28%),
+        radial-gradient(circle at 10% 90%, rgba(255,255,255,.08), transparent 25%),
+        linear-gradient(120deg, #06265B, #073B91 65%, #1254AD);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .preview-image {
+      display: block;
+      width: auto;
+      height: 440px;
+      max-width: 100%;
+      object-fit: contain;
+      cursor: pointer;
+      filter: drop-shadow(0 5px 12px rgba(0,0,0,.12));
+      transition: .2s;
+    }
+
+    .preview-image:hover {
+      transform: scale(1.015);
+    }
+
+    .placeholder {
+      width: min(100%, 330px);
+      height: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px;
+      color: var(--muted);
+      text-align: center;
+      background: white;
+      border: 2px dashed #CBD6E6;
+      border-radius: 10px;
+    }
+
+    .placeholder-icon {
+      width: 65px;
+      height: 65px;
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      background: var(--navy-soft);
+      border-radius: 17px;
+      font-size: 29px;
+    }
+
+    .placeholder strong {
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    .placeholder span {
+      font-size: 11px;
+    }
+
+    /* PROGRAM PAGE NAVIGATION */
+    .page-navigation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      padding: 13px 15px;
+      background: white;
+    }
+
+    .page-navigation.hidden {
+      display: none;
+    }
+
+    .page-nav-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 7px 12px;
+      color: var(--navy);
+      background: var(--navy-soft);
+      border: 0;
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .page-nav-button:hover:not(:disabled) {
+      color: white;
+      background: var(--navy);
+    }
+
+    .page-nav-button:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+    }
+
+    .page-indicator {
+      min-width: 90px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 23px 0;
+      color: #C7D4E8;
+      text-align: center;
+      background: var(--navy-dark);
+      font-size: 11px;
+    }
+
+    /* TABLET */
+    @media (max-width: 850px) {
+      .brosur-grid {
+        gap: 16px;
+      }
+
+      .preview-area {
+        min-height: 440px;
+        padding: 20px 12px;
+      }
+
+      .preview-image,
+      .placeholder {
+        height: 400px;
+      }
+    }
+
+    /* MOBILE */
+    @media (max-width: 650px) {
+      .nav-inner {
+        min-height: 70px;
+      }
+
+      .brand-logo {
+        width: 42px;
+        height: 42px;
+      }
+
+      .brand-name {
+        font-size: 11px;
+      }
+
+      .brand-name small {
+        font-size: 8px;
+      }
+
+      .back-link {
+        font-size: 11px;
+      }
+
+      .page-hero {
+        padding: 48px 0 58px;
+      }
+
+      .page-hero p {
+        font-size: 12px;
+      }
+
+      .brosur-section {
+        padding: 42px 0 60px;
+      }
+
+      .jenjang-tabs {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 7px;
+      }
+
+      .tab-button {
+        min-width: 0;
+        padding: 10px 5px;
+        font-size: 12px;
+      }
+
+      .jenjang-info {
+        padding: 16px;
+      }
+
+      .jenjang-info h3 {
+        font-size: 16px;
+      }
+
+      .jenjang-info p {
+        font-size: 10px;
+      }
+
+      .total-badge {
+        padding: 6px 9px;
+        font-size: 9px;
+      }
+
+      .brosur-grid {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+        margin: auto;
+        gap: 22px;
+      }
+
+      .card-header {
+        padding: 16px;
+      }
+
+      .preview-area {
+        min-height: 0;
+        padding: 20px 15px;
+      }
+
+      .preview-image {
+        width: auto;
+        height: min(115vw, 480px);
+        max-width: 100%;
+      }
+
+      .placeholder {
+        width: min(100%, 340px);
+        height: min(115vw, 480px);
+        min-height: 350px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .brand {
+        gap: 7px;
+      }
+
+      .brand-name {
+        font-size: 9px;
+      }
+
+      .brand-name small {
+        font-size: 7px;
+      }
+
+      .back-link {
+        font-size: 10px;
+      }
+
+      .preview-image {
+        height: 110vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-inner">
+
+      <a href="index.html" class="brand">
+        <img
+          src="assets/ht.png"
+          alt="Logo Sekolah Islam Hang Tuah Batam"
+          class="brand-logo"
+        >
+
+        <div class="brand-name">
+          SEKOLAH ISLAM<br>
+          HANG TUAH BATAM
+          <small>PENERIMAAN MURID BARU</small>
+        </div>
+      </a>
+
+      <a href="index.html" class="back-link">
+        ← Kembali ke Beranda
+      </a>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container hero-content">
+
+      <span class="eyebrow">INFORMASI SPMB</span>
+
+      <h1>
+        Brosur Penerimaan<br>
+        <span>Murid Baru 2027/2028</span>
+      </h1>
+
+      <p>
+        Temukan informasi program pendidikan, kegiatan sekolah,
+        serta rincian biaya pendidikan Sekolah Islam Hang Tuah Batam.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- DAFTAR BROSUR -->
+  <section class="brosur-section">
+    <div class="container">
+
+      <!-- TAB JENJANG -->
+      <div class="jenjang-tabs">
+
+        <button class="tab-button active" data-jenjang="TK">
+          TK
+        </button>
+
+        <button class="tab-button" data-jenjang="SD">
+          SD
+        </button>
+
+        <button class="tab-button" data-jenjang="SMP">
+          SMP
+        </button>
+
+        <button class="tab-button" data-jenjang="SMK">
+          SMK
+        </button>
+
+      </div>
+
+
+      <!-- INFORMASI JENJANG -->
+      <div class="jenjang-info">
+
+        <div>
+          <h3 id="jenjangTitle">Taman Kanak-Kanak</h3>
+          <p id="jenjangDescription">
+            Informasi kegiatan dan program pendidikan TK.
+          </p>
+        </div>
+
+        <span class="total-badge">2 Brosur</span>
+
+      </div>
+
+
+      <!-- GRID BROSUR -->
+      <div class="brosur-grid">
+
+        <!-- BROSUR PROGRAM -->
+        <article class="brosur-card">
+
+          <div class="card-header">
+
+            <div class="card-icon">
+              📖
+            </div>
+
+            <div class="card-title">
+              <h3>Informasi Program</h3>
+              <p>Kegiatan dan rincian program pendidikan</p>
+            </div>
+
+            <span class="card-tag" id="programTag">2 Halaman</span>
+
+          </div>
+
+          <div class="preview-area" id="programPreview">
+
+            <div class="placeholder">
+              <div class="placeholder-icon">📄</div>
+              <strong>Brosur Informasi Program</strong>
+              <span>Preview brosur akan ditampilkan di sini.</span>
+            </div>
+
+          </div>
+
+          <!-- NAVIGASI HALAMAN -->
+          <div class="page-navigation" id="programNavigation">
+
+            <button
+              class="page-nav-button"
+              id="programPrev"
+              disabled
+            >
+              ← Sebelumnya
+            </button>
+
+            <span class="page-indicator" id="programIndicator">
+              Halaman 1 / 2
+            </span>
+
+            <button
+              class="page-nav-button"
+              id="programNext"
+              disabled
+            >
+              Selanjutnya →
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- BROSUR BIAYA -->
+        <article class="brosur-card">
+
+          <div class="card-header">
+
+            <div class="card-icon gold">
+              💰
+            </div>
+
+            <div class="card-title">
+              <h3>Rincian Biaya</h3>
+              <p>Informasi biaya pendidikan</p>
+            </div>
+
+            <span class="card-tag gold">Biaya</span>
+
+          </div>
+
+          <div class="preview-area" id="biayaPreview">
+
+            <div class="placeholder">
+              <div class="placeholder-icon">📄</div>
+              <strong>Brosur Rincian Biaya</strong>
+              <span>Preview brosur akan ditampilkan di sini.</span>
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      © 2026 Sekolah Islam Hang Tuah Batam. All Rights Reserved.
+    </div>
+  </footer>
+
+
+  <script>
+
+    /* ==================================
+       DATA JENJANG DAN FILE BROSUR
+    ================================== */
+
+    const brosurData = {
+
+      TK: {
+        nama: "Taman Kanak-Kanak",
+        deskripsi: "Informasi kegiatan dan program pendidikan Taman Kanak-Kanak.",
+
+        program: [
+          "assets/brosur-tk-program-1.png",
+          "assets/brosur-tk-program-2.png"
+        ],
+
+        biaya: "assets/brosur-tk-biaya.png"
+      },
+
+
+      SD: {
+        nama: "Sekolah Dasar",
+        deskripsi: "Informasi kegiatan dan program pendidikan Sekolah Dasar.",
+
+        program: [
+          "assets/brosur-sd-program-1.png",
+          "assets/brosur-sd-program-2.png"
+        ],
+
+        biaya: "assets/brosur-sd-biaya.png"
+      },
+
+
+      SMP: {
+        nama: "Sekolah Menengah Pertama",
+        deskripsi: "Informasi kegiatan dan program pendidikan Sekolah Menengah Pertama.",
+
+        program: [
+          "assets/brosur-smp-program-1.png",
+          "assets/brosur-smp-program-2.png"
+        ],
+
+        biaya: "assets/brosur-smp-biaya.png"
+      },
+
+
+      SMK: {
+        nama: "Sekolah Menengah Kejuruan",
+        deskripsi: "Informasi kegiatan dan program pendidikan Sekolah Menengah Kejuruan.",
+
+        // SMK hanya memiliki 1 halaman brosur program
+        program: [
+          "assets/brosur-smk-program-1.png"
+        ],
+
+        biaya: "assets/brosur-smk-biaya.png"
+      }
+
+    };
+
+
+    /* ==================================
+       STATE
+    ================================== */
+
+    let activeJenjang = "TK";
+    let currentProgramPage = 0;
+
+
+    /* ==================================
+       ELEMENT
+    ================================== */
+
+    const jenjangTitle = document.getElementById("jenjangTitle");
+    const jenjangDescription = document.getElementById("jenjangDescription");
+
+    const programPreview = document.getElementById("programPreview");
+    const biayaPreview = document.getElementById("biayaPreview");
+
+    const programPrev = document.getElementById("programPrev");
+    const programNext = document.getElementById("programNext");
+
+    const programIndicator = document.getElementById("programIndicator");
+    const programNavigation = document.getElementById("programNavigation");
+    const programTag = document.getElementById("programTag");
+
+
+    /* ==================================
+       GANTI JENJANG
+    ================================== */
+
+    document.querySelectorAll(".tab-button").forEach(button => {
+
+      button.addEventListener("click", function() {
+
+        activeJenjang = this.dataset.jenjang;
+        currentProgramPage = 0;
+
+        document.querySelectorAll(".tab-button").forEach(tab => {
+          tab.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+        renderBrosur();
+
+      });
+
+    });
+
+
+    /* ==================================
+       RENDER HALAMAN BROSUR
+    ================================== */
+
+    function renderBrosur() {
+
+      const data = brosurData[activeJenjang];
+
+      jenjangTitle.textContent = data.nama;
+      jenjangDescription.textContent = data.deskripsi;
+
+      const totalHalaman = data.program.length;
+
+      programTag.textContent = `${totalHalaman} Halaman`;
+
+      // Sembunyikan navigasi jika hanya satu halaman
+      programNavigation.classList.toggle(
+        "hidden",
+        totalHalaman <= 1
+      );
+
+      renderProgram();
+      renderBiaya();
+
+    }
+
+
+    /* ==================================
+       RENDER BROSUR PROGRAM
+    ================================== */
+
+    function renderProgram() {
+
+      const data = brosurData[activeJenjang];
+      const file = data.program[currentProgramPage];
+      const totalHalaman = data.program.length;
+      const jenjangSaatIni = activeJenjang;
+      const halamanSaatIni = currentProgramPage;
+
+      programPreview.innerHTML = `
+        <div class="placeholder">
+          <div class="placeholder-icon">⏳</div>
+          <strong>Memuat brosur...</strong>
+          <span>Mohon tunggu sebentar.</span>
+        </div>
+      `;
+
+      const image = new Image();
+
+      image.onload = function() {
+
+        // Pastikan gambar masih sesuai dengan jenjang dan halaman aktif
+        if (
+          jenjangSaatIni !== activeJenjang ||
+          halamanSaatIni !== currentProgramPage
+        ) {
+          return;
+        }
+
+        const img = document.createElement("img");
+
+        img.src = file;
+        img.alt = `Brosur Program ${jenjangSaatIni} halaman ${halamanSaatIni + 1}`;
+        img.className = "preview-image";
+        img.title = "Klik untuk mengunduh brosur";
+
+        img.addEventListener("click", function() {
+
+          downloadFile(
+            file,
+            `Brosur-Program-${jenjangSaatIni}-Halaman-${halamanSaatIni + 1}.png`
+          );
+
+        });
+
+        programPreview.replaceChildren(img);
+
+      };
+
+      image.onerror = function() {
+
+        if (
+          jenjangSaatIni !== activeJenjang ||
+          halamanSaatIni !== currentProgramPage
+        ) {
+          return;
+        }
+
+        programPreview.innerHTML = `
+          <div class="placeholder">
+            <div class="placeholder-icon">📄</div>
+            <strong>Brosur Informasi Program ${jenjangSaatIni}</strong>
+            <span>Halaman ${halamanSaatIni + 1} belum tersedia.</span>
+          </div>
+        `;
+
+      };
+
+      image.src = file;
+
+      // Navigasi mengikuti jumlah halaman
+      programPrev.disabled = currentProgramPage === 0;
+
+      programNext.disabled =
+        currentProgramPage >= totalHalaman - 1;
+
+      programIndicator.textContent =
+        `Halaman ${currentProgramPage + 1} / ${totalHalaman}`;
+
+    }
+
+
+    /* ==================================
+       NAVIGASI HALAMAN PROGRAM
+    ================================== */
+
+    programPrev.addEventListener("click", function() {
+
+      if (currentProgramPage > 0) {
+
+        currentProgramPage--;
+
+        renderProgram();
+
+      }
+
+    });
+
+
+    programNext.addEventListener("click", function() {
+
+      const totalHalaman = brosurData[activeJenjang].program.length;
+
+      if (currentProgramPage < totalHalaman - 1) {
+
+        currentProgramPage++;
+
+        renderProgram();
+
+      }
+
+    });
+
+
+    /* ==================================
+       RENDER BROSUR BIAYA
+    ================================== */
+
+    function renderBiaya() {
+
+      const jenjangSaatIni = activeJenjang;
+      const file = brosurData[jenjangSaatIni].biaya;
+
+      biayaPreview.innerHTML = `
+        <div class="placeholder">
+          <div class="placeholder-icon">⏳</div>
+          <strong>Memuat brosur...</strong>
+          <span>Mohon tunggu sebentar.</span>
+        </div>
+      `;
+
+      const image = new Image();
+
+      image.onload = function() {
+
+        if (jenjangSaatIni !== activeJenjang) {
+          return;
+        }
+
+        const img = document.createElement("img");
+
+        img.src = file;
+        img.alt = `Brosur Biaya ${jenjangSaatIni}`;
+        img.className = "preview-image";
+        img.title = "Klik untuk mengunduh brosur";
+
+        img.addEventListener("click", function() {
+
+          downloadFile(
+            file,
+            `Brosur-Biaya-${jenjangSaatIni}.png`
+          );
+
+        });
+
+        biayaPreview.replaceChildren(img);
+
+      };
+
+      image.onerror = function() {
+
+        if (jenjangSaatIni !== activeJenjang) {
+          return;
+        }
+
+        biayaPreview.innerHTML = `
+          <div class="placeholder">
+            <div class="placeholder-icon">📄</div>
+            <strong>Brosur Rincian Biaya ${jenjangSaatIni}</strong>
+            <span>Brosur biaya belum tersedia.</span>
+          </div>
+        `;
+
+      };
+
+      image.src = file;
+
+    }
+
+
+    /* ==================================
+       DOWNLOAD BROSUR
+    ================================== */
+
+    function downloadFile(file, filename) {
+
+      const link = document.createElement("a");
+
+      link.href = file;
+      link.download = filename;
+
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+
+    }
+
+
+    /* ==================================
+       INITIAL LOAD
+    ================================== */
+
+    renderBrosur();
+
+  </script>
+
+</body>
+</html>
